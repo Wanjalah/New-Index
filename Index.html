@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINsCare</title>
+    <link rel="stylesheet" href="index.js">
+    <link rel="stylesheet" href="STYLE.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body> 
+    <div class="main-container">
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="Medilop" class="Medilop">
+                  <i class="fa fa-plus-circle" style="font-size:24px"></i>
+                    <strong>KINs</strong>CARE
+                </a>
+            </div>
+            <div class="navbar-center">
+                <a href="#home" class="homer">Home</a>
+                <a href="#Services" class="service">Services</a>
+                <a href="#Facility" class="facility">Facility</a>
+                <a href="#About" class="about">About us</a>
+            </div>
+            <div class="navbar-right">
+                <a href="login" class="log">
+                    Log In
+                </a>
+                <button class="sign">Sign Up</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="kin">
+                <h1 class="head1"><strong>Healing with heart <br>Driven by Expertise</strong></h1>
+                <div class="parag">
+                    <p>At our hospital, your well-being is our mission. <br>
+                        Our dedicated healthcare team is committed to providing timely,<br> 
+                        compassionate care tailored to your unique needs. From accurate<br> diagnoses to personalized treatments, 
+                        we guide you every step<br> of the way. With a focus on safety, transparency, and affordability, <br>
+                        we work closely with you and your family to ensure your path to <br>recovery is smooth and supported. 
+                        Together, we create healthier futures.<br><br>
+                    </p>
+                    <div class="input-button-wrapper">
+                        <input type="text" id="email0" name="email" placeholder="Enter your email">
+                        <button type="submit" class="submit-btn">Sign up</button>
+                    </div>
+                    <div class="vertical-align">
+                        <button id="button">Back Now</button>
+                        <div class="video-icon" id="play-icon" style="cursor: pointer;">
+                            <i class="fa fa-play"></i>
+                        </div>
+                        <a href="#" class="play-video-link">Play Video</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-container">
+                <video id="video" class="video" poster="doctor-patient-communication.jpg" style="display:none;">
+                    <source src="img/Doctor's Appointment _ English Conversation.mp4" type="video/mp4">
+                </video>
+                <img id="video-poster" src="IMG/doctor patient communication.jpg" alt="Doctor and Patient Communication" class="image">
+            </div>
+        </div>
+        <script>
+            const playIcon = document.getElementById('play-icon');
+            const video = document.getElementById('video');
+            const videoPoster = document.getElementById('video-poster');
+            let isPlaying = false;
+        
+            playIcon.addEventListener('click', function() {
+                videoPoster.style.display = 'none'; 
+                video.style.display = 'block'; 
+        
+                if (isPlaying) {
+                    video.pause();
+                } else {
+                    video.play();
+                }
+                isPlaying = !isPlaying; 
+            });
+        
+            video.addEventListener('click', function() {
+                if (isPlaying) {
+                    video.pause(); 
+                } else {
+                    video.play(); 
+                }
+                isPlaying = !isPlaying;
+            });
+        </script>
+<div class="sub-container44">
+    <div class="span-div">
+        <span class="sub-span" data-target="95">0%</span>
+        <p class="span-text">recovery rate</p>
+    </div>
+    <div class="line"></div> <!-- Line between items -->
+    <div class="span-div">
+        <span class="sub-span" data-target="1500">0+</span>
+        <p class="span-text">Employed</p>
+    </div>
+    <div class="line"></div> <!-- Line between items -->
+    <div class="span-div">
+        <span class="sub-span" data-target="3000">0+</span>
+        <p class="span-text">recovered</p>
+    </div>
+    <div class="line"></div> <!-- Line between items -->
+    <div class="span-div">
+        <span class="sub-span" data-target="100">0%</span>
+        <p class="span-text">Transparency</p>
+    </div>
+</div>
+
+<script>
+function animateNumbers() {
+    const counters = document.querySelectorAll('.sub-span');
+    const duration = 600000; // 10 minutes
+    const lowerBounds = {
+        "95": 85,  // Recovery rate won't fall below 85%
+        "1500": 1400, // Employed won't fall below 1400
+        "3000": 2800, // Recovered won't fall below 2800
+        "100": 90 // Transparency won't fall below 90%
+    };
+
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const lowerBound = lowerBounds[target.toString()] || 0; // Set lower bound based on target or 0 as fallback
+
+        const fluctuate = () => {
+            const current = +counter.innerText.replace(/[^0-9]/g, ''); 
+            const randomChange = Math.random() < 0.5 ? -1 : 1; // Randomly decide whether to increase or decrease
+            let newValue = current + randomChange * Math.ceil(Math.random() * 5); // Random change of 1 to 5
+
+            // Ensure the new value doesn't exceed the target or go below the lower bound
+            if (newValue > target) newValue = target;
+            if (newValue < lowerBound) newValue = lowerBound;
+
+            counter.innerText = newValue + (counter.innerText.includes('%') ? '%' : '+');
+            setTimeout(fluctuate, 1000); // Update every second for smooth fluctuation
+        };
+
+        fluctuate();
+    });
+}
+
+window.addEventListener('DOMContentLoaded', animateNumbers);
+
+</script>
+<div class="services-section">
+    <div class="section-header">Comprehensive <strong>Care Solution</strong></div>
+    <div class="bestservice">
+        <div class="sub-bestservice">
+            <span class="myimage"><img class="rounded-circle"
+                src="img/0f268185754236facab219156bb71694.jpg" alt="All Specialist"></span>
+            <p class="caps">All Specialist</p>
+            <p>Consult our network of experts for specialized medical care.</p>
+        </div>
+        <div class="sub-bestservice">
+            <span class="myimage"><img 
+                src="img/180831hcqatweedy-editorial.qatweedy.jpg" alt="Private & Secure"></span>
+            <p class="caps">Private & Secure</p>
+            <p>Your health data is safe with us, handled with care and confidentiality.</p>
+        </div>
+        <div class="sub-bestservice">
+            <span class="myimage"><img 
+                src="img/Becoming-a-medical-doctor-or-physician-in-Germany.jpg" alt="Million Customers"></span>
+            <p class="caps">Million Customers</p>
+            <p>Join thousands of satisfied patients who trust our services.</p>
+        </div>
+        <div class="sub-bestservice">
+            <span class="myimage"><img 
+                src="img/doctors_visit_1200x900.jpg" alt="Chatbot Support"></span>
+            <p class="caps">Chatbot Support</p>
+            <p>Get immediate assistance from our 24/7 virtual assistant.</p>
+        </div>
+    </div>
+</div>
+
+    <div class="otherpics">
+        <div class="sub-otherpics">
+            <span><img src="img/baby health.jpg" alt="Baby Health"></span>
+            <p>Baby Health</p>
+        </div>
+        <div class="sub-otherpics">
+            <span><img src="img/stomach health.jpg" alt="Stomach Health"></span>
+            <p>Stomach</p>
+        </div>
+        <div class="sub-otherpics">
+            <span><img src="img/psychiatry.jpg" alt="Psychiatry"></span>
+            <p>Psychiatry</p>
+        </div>
+        <div class="sub-otherpics">
+            <span><img src="img/urology.jpg" alt="Urology"></span>
+            <p>Urology</p>
+        </div>
+        <div class="sub-otherpics">
+            <span><img src="img/dermatology.jpg" alt="Dermatology"></span>
+            <p>Dermatology</p>
+        </div>
+        <div class="sub-otherpics">
+            <span><img src="img/infectious.webp" alt="Infectious Disease"></span>
+            <p>Infectious Disease</p>
+        </div>
+    </div>
+
+    <div class="info-ma">
+      Are You Looking For:
+    </div>
+    <div class="additional-info">
+        <div class="info-item">
+            <span>Doctors</span>
+            <p>Our experienced doctors are dedicated to providing personalized care for every patient.</p>
+        </div>
+        <div class="info-item">
+            <span>Consult</span>
+            <p>Book your consultation easily online or in-person to get expert medical advice.</p>
+        </div>
+        <div class="info-item">
+            <span>Pharmacy</span>
+            <p>Our pharmacy offers a full range of medications, delivered with care and efficiency.</p>
+        </div>
+        <div class="info-item">
+            <span>Diagnostics</span>
+            <p>Advanced diagnostic tools for accurate and timely medical results.</p>
+        </div>
+    </div>
+    <div class="doctors-section">
+        <div class="section-header">Renowned Doctors <strong>at Your Service</strong></div>
+        <div class="main-doctors">
+            <div class="doctors">
+                <span><img src="img/kin.png" alt="Dr. Kin Wanjala"></span>
+                <p>Dr. Kin Wanjala</p>
+                <p>Specialist in Internal Medicine, providing care for adult diseases.</p>
+                <p>Studied at the University of Nairobi with a fellowship at Aga Khan.</p>
+            </div>
+            <div class="doctors">
+                <span><img src="img/michael.png" alt="Dr. Michael Work"></span>
+                <p>Dr. Michael Work</p>
+                <p>Psychiatrist focusing on mental health.</p>
+                <p>Graduated from Harvard, with a psychiatry residency at Massachusetts General Hospital.</p>
+            </div>
+            <div class="doctors">
+                <span><img src="img/mulela.jpg" alt="Dr. Kelvin Mulela"></span>
+                <p>Dr. Kelvin Mulela</p>
+                <p>Cardiologist, specializing in heart disease treatment.</p>
+                <p>Trained at the University of Cape Town with further specialization at the Mayo Clinic.</p>
+            </div>
+            <div class="doctors">
+                <span><img src="img/Dkombo.png" alt="Dr. David Kombo"></span>
+                <p>Dr. David Kombo</p>
+                <p>Family Medicine doctor, providing holistic care for families.</p>
+                <p>Studied at the University of Witwatersrand with residency at Stellenbosch University.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="steps-section">
+        <div class="section-header">Your Journey to 
+            <strong>Recovery Starts Here</strong>
+        </div>
+        <div class="someinfo">
+            <div class="step-item" style="margin-right: 30px;">
+                <div class="steps">
+                    <span><img src="img/doctor profile.webp" alt="" style="width: 100px; height: 100px; border-radius: 50%;"></span>
+                </div>
+                <p>Check Doctor Profile</p>
+                <p>Browse through the profiles of top-rated doctors to find the right one for your needs.</p>
+            </div>
+            <div class="step-item">
+                <div class="steps">
+                    <span><img src="img/consultation services.jpg" alt="" style="width: 100px; height: 100px; border-radius: 50%;"></span>
+                </div>
+                <p>Request Consultation</p>
+                <p>Choose your preferred doctor and schedule a consultation easily online.</p>
+            </div>
+            <div class="step-item">
+                <div class="steps">
+                    <span><img src="img/Receive consultation.webp" alt="" style="width: 100px; height: 100px; border-radius: 50%;"></span>
+                </div>
+                <p>Receive Your Consultation</p>
+                <p>Have a virtual or in-person consultation with your selected doctor.</p>
+            </div>
+            <div class="step-item">
+                <div class="steps">
+                    <span><img src="img/Get solution.jpg" alt="" style="width: 100px; height: 100px; border-radius: 50%;"></span>
+                </div>
+                <p>Get Your Solution</p>
+                <p>Receive your personalized diagnosis and treatment plan from the doctor.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="Doctor22">
+        <div class="sub-doctor22">
+            <div class="doctor22-header">
+                Expert Healthcare <strong>Professionals <br>Ready Around the Clock</strong>
+            </div>
+            <p>Access world-class healthcare professionals from around the globe. <br> 
+                Consult with our expert doctors for the best possible care.</p>
+            <p>We are here for you, no matter where you are. <br> 
+                Your health is our priority.</p><br><br>
+            <button class="button44">Find Your Doctor</button>
+        </div>
+        <span><img src="img/best doctors anywhere.webp" alt="Leading Doctors Anytime, Anywhere" class="responsive-image"></span>
+    </div>
+    
+    <div class="onlinecare">
+        <span><img src="img/online care.jpg" alt="Online Care" class="responsive-image"></span>
+        <div class="onlinecare-content">
+            <p class="onlinecare-header">
+                Fast and Reliable <strong>Online Medical Support</strong> for Your Health
+            </p>
+            <p>We provide immediate, professional care to address your medical concerns 
+                and ensure the well-being of you and your loved ones.</p>
+            <p>Receive expert advice and treatment from the safety and comfort of your home 
+                at a time that works best for you.</p>
+            <button class="appointment-button">Book Appointment</button>
+        </div>
+    </div>    
+    <div class="testimonials-section">
+        <div class="section-header">What People Say <strong>About Us</strong></div>
+        <div class="testimonials">
+            <div class="testimonial">
+                <span><img src="img/patient interview.png" alt="Patient Interview"></span>
+                <p>"The staff at this hospital made me feel at home. Their professionalism 
+                    and care helped me recover faster than I expected. I’m truly grateful!"</p>
+            </div>
+            <div class="testimonial">
+                <span><img src="img/patient with us.png" alt="Patient with Us"></span>
+                <p>"I was impressed by the cleanliness and the advanced medical equipment. 
+                    The doctors and nurses are kind and always available. Highly recommended!"</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="registration-section">
+        <p class="register-text">Want to <strong>Register</strong> Easily?</p>
+        <button class="submit-button">Submit Here</button>
+    </div>
+
+  
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <a href="Medilop" class="Medilop-footer" style="color: black;">
+                    <i class="fa fa-plus-circle" style="font-size:24px"></i>
+                    <strong>KINs</strong>Care
+                </a>
+                <p class="footer-description">
+                    <strong>KINs</strong>CARE is dedicated to providing top-notch healthcare services to ensure your well-being.
+                </p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+                    <a href="https://www.linkedin.com/feed/" class="fa fa-linkedin" target="_blank"></a>
+                    <a href="https://www.youtube.com/" class="fa fa-youtube" target="_blank"></a>
+                    <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a>
+                </div>                
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Delivery support</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Terms of use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Doctors</a></li>
+                    <li><a href="#">Facilities</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Users</h3>
+                <ul>
+                    <li><a href="#">User Login</a></li>
+                    <li><a href="#">User Register</a></li>
+                    <li><a href="#">Forgot Password</a></li>
+                    <li><a href="#">Account</a></li>
+                </ul>
+            </div>            
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Designed by Kin.
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+    crossorigin="anonymous"></script>
+</body>
+</html>
