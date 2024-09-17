@@ -139,7 +139,7 @@ function animateNumbers() {
             if (newValue < lowerBound) newValue = lowerBound;
 
             counter.innerText = newValue + (counter.innerText.includes('%') ? '%' : '+');
-            setTimeout(fluctuate, 1000); // Update every second for smooth fluctuation
+            setTimeout(fluctuate, 1000); 
         };
 
         fluctuate();
